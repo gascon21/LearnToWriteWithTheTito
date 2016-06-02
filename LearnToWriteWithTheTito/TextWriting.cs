@@ -10,7 +10,7 @@ namespace LearnToWriteWithTheTito
 {
     class TextWriting
     {
-        private bool finish;
+        private bool finishCheck;
         private int xText;
         private int yText;
         private int xWrite;
@@ -29,7 +29,7 @@ namespace LearnToWriteWithTheTito
             yText = 1;
             xWrite = 5;
             yWrite = 9;
-            finish = false;
+            finishCheck = false;
             originTime = new int[3];
             currentTime = new int[3];
             elementChrono = new Element();
@@ -49,9 +49,9 @@ namespace LearnToWriteWithTheTito
             bool firstLine = true;
             if (File.Exists(fileName))
             {
-                StreamReader input = File.OpenText(fileName);
                 try
                 {
+                    StreamReader input = File.OpenText(fileName);
                     string line;
                     do
                     {
@@ -142,79 +142,88 @@ namespace LearnToWriteWithTheTito
         /// <param name="level">Parameter indicating the level to be check</param>
         public void Check(int level)
         {
-            int pos = 0;
             originTime[0] = origin.Hour;
             originTime[1] = origin.Minute;
             originTime[2] = origin.Second;
-            
+            int mistakes = 0;
+            int currentPos = 0;
+            //int currentWord = 0;
+            //int currentPosInWord = 0;
+            //string[] words = exercises[0].GetText()[0].Split(' ');
+            int posX = 0;
+            bool finish;
+
             Console.SetCursorPosition(xWrite, yWrite);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Writed text(Green correct, red mistake)");
             Console.ForegroundColor = ConsoleColor.Gray;
             yWrite += 1;
-            while (!finish)
+            while (!finishCheck)
             {
-                finish = true;
+                finish = false;
+                DateTime current = DateTime.Now;
+                currentTime[0] = current.Hour;
+                currentTime[1] = current.Minute;
+                currentTime[2] = current.Second;
+                elementChrono.Menu(originTime, currentTime);
                 
-                for (int i = 0; i < exercises[0].GetText()[0].Length; i++)
+                Thread.Sleep(15);
+                if (Console.KeyAvailable)
                 {
-                    DateTime current = DateTime.Now;
-                    currentTime[0] = current.Hour;
-                    currentTime[1] = current.Minute;
-                    currentTime[2] = current.Second;
-                    elementChrono.Menu(originTime, currentTime);
+                    Console.SetCursorPosition(xWrite + posX, yWrite);
+                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    if (key.KeyChar != ' ')
+                    {
+                        if (key.KeyChar != exercises[0].GetText()[0][currentPos])
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(key.KeyChar);
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            mistakes++;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(key.KeyChar);
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                        }
+                    }
+                    posX++;
+                    currentPos++;
 
                     // Reflects the value of the key, check it and if it is
                     // right printed with green, if the letter is incorrect
                     // printed in red
-                    Console.SetCursorPosition(xWrite + pos, yWrite);
-                    ConsoleKeyInfo key = Console.ReadKey(true);
-                    if ((i % 135 == 0) && (i > 0))
+                    if ((currentPos % 135 == 0) && (currentPos > 0))
                     {
                         yWrite += 1;
-                        pos = 0;
+                        posX = 0;
                         Console.SetCursorPosition(xWrite, yWrite);
                     }
-                    if (key.KeyChar != exercises[0].GetText()[0][i])
-                    {
-                        finish = false;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(key.KeyChar);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(key.KeyChar);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                    pos++;
                 }
-                Console.WriteLine();
-                Console.WriteLine();
-
-                // Pausing intrigue, about one second
-                Thread.Sleep(1000);
 
                 // Check if you typed is correct or not, if it is passed 
                 // to the next level, if not asking you to try again
-                if (finish)
+                // lack of level rise
+                if (currentPos == exercises[0].GetText()[0].Length)
                 {
-                    Console.SetCursorPosition(xWrite, yWrite + 4);
-                    Console.WriteLine("Correct!");
-                    Console.WriteLine();
-                    level++;
-                    finish = true;
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    Console.SetCursorPosition(xWrite, yWrite + 4);
-                    Console.WriteLine("Wrong answer");
-                    Console.WriteLine();
-                    finish = true;
-                    Thread.Sleep(2000);
-
+                    if(mistakes != 0)
+                    {
+                        Console.SetCursorPosition(xWrite, yWrite + 4);
+                        Console.WriteLine("Wrong answer");
+                        Console.WriteLine();
+                        finishCheck = true;
+                        Thread.Sleep(2000);
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(xWrite, yWrite + 4);
+                        Console.WriteLine("Correct!");
+                        Console.WriteLine();
+                        level++;
+                        finishCheck = true;
+                        Thread.Sleep(2000);
+                    }
                 }
             }
         }
