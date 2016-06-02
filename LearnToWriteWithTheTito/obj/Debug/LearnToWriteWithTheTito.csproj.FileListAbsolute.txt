@@ -1,0 +1,18 @@
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe.config
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.csprojResolveAssemblyReference.cache
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.exe
+C:\Users\david_000\Desktop\DAM\Programacion\LearnToWriteWithTheTito\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe.config
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.exe
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\Pablo\Desktop\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.csprojResolveAssemblyReference.cache
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe.config
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.exe
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.exe
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\bin\Debug\LearnToWriteWithTheTito.pdb
+C:\Users\david_000\Desktop\DavidProyectV 0.5\DavidProyect\LearnToWriteWithTheTito\obj\Debug\LearnToWriteWithTheTito.csprojResolveAssemblyReference.cache
