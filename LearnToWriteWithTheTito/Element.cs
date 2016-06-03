@@ -56,7 +56,7 @@ namespace LearnToWriteWithTheTito
             Console.WriteLine("     _________   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   _______________");
             Console.WriteLine("    |         | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |               |");
             Console.WriteLine("    |  SHIFT  | | > | | Z | | X | | C | | V | | B | | N | | M | | , | | . | | - | |     SHIFT     |");
-            Console.WriteLine("    |_______ _| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |_______________|");
+            Console.WriteLine("    |_________| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |_______________|");
             Console.WriteLine("     _________               ___   ___________________________                                    ");
             Console.WriteLine("    |         |             |   | |                           |                                   ");
             Console.WriteLine("    | CONTROL |             |ALT| |          SPACE            |                                   ");
