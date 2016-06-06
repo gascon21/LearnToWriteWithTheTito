@@ -13,13 +13,14 @@ namespace LearnToWriteWithTheTito
     class LearnToWriteWithTheTito
     {
         private int level;
+        private int course;
+        private int exercise;
         private TextWriting textWriting;
         private Element elements;
         private WelcomeScreen welcomeScreen;
 
         public LearnToWriteWithTheTito()
         {
-            level = 1;
             textWriting = new TextWriting();
             elements = new Element();
             welcomeScreen = new WelcomeScreen();
@@ -35,12 +36,32 @@ namespace LearnToWriteWithTheTito
             this.level = level;
         }
 
-        private void Run()
+        public int GetCourse()
         {
-            welcomeScreen.Draw();
+            return course;
+        }
+
+        public void SetCourse(int course)
+        {
+            this.course = course;
+        }
+
+        public int GetExercise()
+        {
+            return exercise;
+        }
+
+        public void SetExercise(int exercise)
+        {
+            this.exercise = exercise;
+        }
+
+        private void Run(LearnToWriteWithTheTito LearnToWrite)
+        {
+            welcomeScreen.Draw(LearnToWrite);
             elements.Draw();
-            textWriting.Write(level);
-            textWriting.Check(level);
+            textWriting.Write(course, level, exercise);
+            textWriting.Check(course, level, exercise);
             
 
         }
@@ -50,7 +71,7 @@ namespace LearnToWriteWithTheTito
             Console.WindowHeight = 39;
             Console.WindowWidth = 150;
             LearnToWriteWithTheTito LearnToWrite = new LearnToWriteWithTheTito();
-            LearnToWrite.Run();
+            LearnToWrite.Run(LearnToWrite);
         }
     }
 }

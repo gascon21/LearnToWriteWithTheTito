@@ -18,10 +18,8 @@ namespace LearnToWriteWithTheTito
         private DateTime origin = DateTime.Now;
         private int[] originTime;
         private int[] currentTime;
-        private List<string> phrases;
         private Element elementChrono;
-        private List<Exercise> exercises;
-        private Exercise exercise;
+        private Exercise exercises;
 
         public TextWriting()
         {
@@ -33,8 +31,7 @@ namespace LearnToWriteWithTheTito
             originTime = new int[3];
             currentTime = new int[3];
             elementChrono = new Element();
-            phrases = new List<string>();
-            exercises = new List<Exercise>();
+            exercises = new Exercise();
         }
 
         /// <summary>
@@ -42,50 +39,50 @@ namespace LearnToWriteWithTheTito
         /// which has passed through a parameter
         /// </summary>
         /// <param name="level">Parameter indicating the level to be read</param>
-        public void Read(int level)
+        public void Read(int course, int level, int exercise)
         {
-            string fileName = "levels.txt";
-            string[] phrase;
-            bool firstLine = true;
+            
+            string fileName = course.ToString("00") + level.ToString("00")
+                    + exercise.ToString("00") + ".meca";
             if (File.Exists(fileName))
             {
                 try
                 {
                     StreamReader input = File.OpenText(fileName);
+                    List<string> text = new List<string>();
                     string line;
-                    do
+
+                    line = input.ReadLine();
+                    exercises.SetCourse(Convert.ToInt32(line));
+
+                    line = input.ReadLine();
+                    exercises.SetLesson(Convert.ToInt32(line));
+
+                    line = input.ReadLine();
+                    exercises.SetExercise(Convert.ToInt32(line));
+
+                    line = input.ReadLine();
+                    exercises.SetComment(line);
+
+                    line = input.ReadLine();
+                    exercises.SetTime(line);
+
+                    line = input.ReadLine();
+                    exercises.SetSpeed(line);
+
+                    /*do
                     {
                         line = input.ReadLine();
-                        // The first line is the header and have to skip it
-                        if (!firstLine)
+                        if (line != null)
                         {
-                            if (line != null)
-                            {
-                                phrases.Add(line);
-                            }
+                            text.Add(line);
                         }
-                        firstLine = false;
-                    } while (line != null);
+                    } while (line != null);*/
+
+                    line = input.ReadLine();
+                    text.Add(line);
+                    exercises.SetText(text);
                     input.Close();
-                    
-                    List<string> text;
-                    for (int i = 0 ; i < phrases.Count ; i ++)
-                    {
-                        exercise = new Exercise();
-                        text = new List<string>();
-                        phrase = phrases[i].Split(';');
-                        exercise.SetCourse(Convert.ToInt32(phrase[0]));
-                        exercise.SetLesson(Convert.ToInt32(phrase[1]));
-                        exercise.SetExercise(Convert.ToInt32(phrase[2]));
-                        exercise.SetComment(phrase[3]);
-                        exercise.SetTime(phrase[4]);
-                        exercise.SetSpeed(phrase[5]);
-                        text.Add(phrase[6].Substring(1, phrase[6].Length - 2));
-                        exercise.SetText(text);
-                        exercises.Add(exercise);
-                        
-                    }
-                    
                 }
                 catch (PathTooLongException)
                 {
@@ -114,9 +111,9 @@ namespace LearnToWriteWithTheTito
         /// corresponding phrase at the level
         /// </summary>
         /// <param name="level">Parameter indicating the level to be write</param>
-        public void Write(int level)
+        public void Write(int course, int level, int exercise)
         {
-            Read(level);
+            Read(course, level, exercise);
             Console.SetCursorPosition(xText, yText);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Text to be writing");
@@ -124,14 +121,14 @@ namespace LearnToWriteWithTheTito
             yText += 1;
             Console.SetCursorPosition(xText, yText);
 
-            for (int i = 0; i < exercises[0].GetText()[0].Length; i ++)
+            for (int i = 0; i < exercises.GetText()[0].Length; i ++)
             {
                 if((i % 135 == 0) && (i > 0))
                 {
                     yText += 1;
                     Console.SetCursorPosition(xText, yText);
                 }
-                Console.Write(exercises[0].GetText()[0][i]);
+                Console.Write(exercises.GetText()[0][i]);
             }
         }
 
@@ -140,7 +137,7 @@ namespace LearnToWriteWithTheTito
         /// writing it typed by the user while checking failures
         /// </summary>
         /// <param name="level">Parameter indicating the level to be check</param>
-        public void Check(int level)
+        public void Check(int course, int level, int exercise)
         {
             originTime[0] = origin.Hour;
             originTime[1] = origin.Minute;
@@ -151,7 +148,7 @@ namespace LearnToWriteWithTheTito
             //int currentPosInWord = 0;
             //string[] words = exercises[0].GetText()[0].Split(' ');
             int posX = 0;
-            bool finish;
+            //bool finish;
 
             Console.SetCursorPosition(xWrite, yWrite);
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -160,7 +157,7 @@ namespace LearnToWriteWithTheTito
             yWrite += 1;
             while (!finishCheck)
             {
-                finish = false;
+                //finish = false;
                 DateTime current = DateTime.Now;
                 currentTime[0] = current.Hour;
                 currentTime[1] = current.Minute;
@@ -174,7 +171,7 @@ namespace LearnToWriteWithTheTito
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     if (key.KeyChar != ' ')
                     {
-                        if (key.KeyChar != exercises[0].GetText()[0][currentPos])
+                        if (key.KeyChar != exercises.GetText()[0][currentPos])
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write(key.KeyChar);
@@ -205,7 +202,7 @@ namespace LearnToWriteWithTheTito
                 // Check if you typed is correct or not, if it is passed 
                 // to the next level, if not asking you to try again
                 // lack of level rise
-                if (currentPos == exercises[0].GetText()[0].Length)
+                if (currentPos == exercises.GetText()[0].Length)
                 {
                     if(mistakes != 0)
                     {

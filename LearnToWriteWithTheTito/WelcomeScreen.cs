@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace LearnToWriteWithTheTito
 {
@@ -12,13 +14,95 @@ namespace LearnToWriteWithTheTito
     /// </summary>
     class WelcomeScreen
     {
-        public void CheckKey()
+        public void ListOfExercises()
         {
-            //TO DO
+            DirectoryInfo dir = new DirectoryInfo(".");
+            FileInfo[] file = dir.GetFiles();
+            for (int i = 0; i < file.Length; i++)
+            {
+                if (file[i].FullName.Substring(file[i].FullName.Length - 5) ==
+                        ".meca")
+                {
+                    Console.SetCursorPosition(110, 27 + i);
+                    Console.WriteLine(file[i].FullName.Substring(
+                            file[i].FullName.Length - 11));
+                }
+            }
         }
-        public void Draw()
+
+        public void CheckKey(LearnToWriteWithTheTito LearnToWrite)
         {
-            Console.SetCursorPosition(0, 4);
+            int course = 1;
+            int level = 1;
+            int exercise = 1;
+            int yArrow = 0;
+            ConsoleKeyInfo key;
+            bool enterKey = false;
+
+            do
+            {
+                Console.SetCursorPosition(107, 27 + yArrow);
+                Console.Write("->");
+                Thread.Sleep(15);
+                if (Console.KeyAvailable)
+                {
+                    key = Console.ReadKey(true);
+
+                    if (key.Key == ConsoleKey.UpArrow)
+                    {
+                        if (yArrow > 0)
+                        {
+                            Console.SetCursorPosition(107, 27 + yArrow);
+                            Console.Write("  ");
+                            yArrow--;
+
+                            exercise--;
+                            if(exercise < 1)
+                            {
+                                exercise = 1;
+                                level--;
+                                if(level < 1)
+                                {
+                                    level = 1;
+                                    course--;
+                                }
+                            }
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.DownArrow)
+                    {
+                        if (yArrow < 11)
+                        {
+                            Console.SetCursorPosition(107, 27 + yArrow);
+                            Console.Write("  ");
+                            yArrow++;
+
+                            exercise++;
+                            if (exercise > 3) // Greater than 3 because there are only 3 exercises per level
+                            {
+                                exercise = 1;
+                                level++;
+                                if (level > 2) // Greater than 2 because there are only 2 levels per course
+                                {
+                                    level = 1;
+                                    course++;
+                                }
+                            }
+                        }
+                    }
+                    else if(key.Key == ConsoleKey.Enter)
+                    {
+                        enterKey = true;
+                        LearnToWrite.SetCourse(course);
+                        LearnToWrite.SetLevel(level);
+                        LearnToWrite.SetExercise(exercise);
+                    }
+                }
+            } while (!enterKey);
+        }
+        public void Draw(LearnToWriteWithTheTito LearnToWrite)
+        {
+            Console.SetCursorPosition(0, 2);
             Console.WriteLine("                                   _        ______        __       ____    __    _          _________     _____     ");
             Console.WriteLine("                                  | |      |  ____|      /  \\     |  _ \\  |  \\  | |        |___   ___|   /  _  \\    ");
             Console.WriteLine("                                  | |      | |__        / /\\ \\    | |_\\ \\ | . \\ | |            | |      /  / \\  \\   ");
@@ -43,11 +127,14 @@ namespace LearnToWriteWithTheTito
             Console.WriteLine("                                  |_|     |_|   |_| |_______|            |_|     |_|     |_|       \\_____/    _   _   _   ");
             Console.WriteLine("                                                                                                             |_| |_| |_|  ");
 
+            /*
             Console.SetCursorPosition(58, 30);
             Console.WriteLine("To begin you have to press \"ENTER\"");
             Console.SetCursorPosition(59, 31);
             Console.WriteLine("To exit you have to press \"ESC\"");
-            Console.ReadLine();
+            */
+            ListOfExercises();
+            CheckKey(LearnToWrite);
         }
         
 
