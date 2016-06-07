@@ -18,6 +18,7 @@ namespace LearnToWriteWithTheTito
         private DateTime origin = DateTime.Now;
         private int[] originTime;
         private int[] currentTime;
+        private Mark marks;
         private Element elementChrono;
         private Exercise exercises;
 
@@ -31,6 +32,7 @@ namespace LearnToWriteWithTheTito
             originTime = new int[3];
             currentTime = new int[3];
             elementChrono = new Element();
+            marks = new Mark();
             exercises = new Exercise();
         }
 
@@ -163,28 +165,31 @@ namespace LearnToWriteWithTheTito
                 currentTime[1] = current.Minute;
                 currentTime[2] = current.Second;
                 elementChrono.Menu(originTime, currentTime);
-                
+                marks.Hand(exercises.GetText()[0][currentPos], false);
+                marks.KeyBoard(exercises.GetText()[0][currentPos], false);
+
                 Thread.Sleep(15);
                 if (Console.KeyAvailable)
                 {
                     Console.SetCursorPosition(xWrite + posX, yWrite);
                     ConsoleKeyInfo key = Console.ReadKey(true);
-                    if (key.KeyChar != ' ')
+                    if (key.KeyChar != exercises.GetText()[0][currentPos])
                     {
-                        if (key.KeyChar != exercises.GetText()[0][currentPos])
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(key.KeyChar);
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            mistakes++;
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write(key.KeyChar);
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(key.KeyChar);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        mistakes++;
                     }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(key.KeyChar);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+
+                    marks.Hand(exercises.GetText()[0][currentPos], true);
+                    marks.KeyBoard(exercises.GetText()[0][currentPos], true);
+
                     posX++;
                     currentPos++;
 

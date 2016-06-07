@@ -14,6 +14,7 @@ namespace LearnToWriteWithTheTito
     /// </summary>
     class WelcomeScreen
     {
+        List<string> exercises = new List<string>();
         public void ListOfExercises()
         {
             DirectoryInfo dir = new DirectoryInfo(".");
@@ -23,22 +24,36 @@ namespace LearnToWriteWithTheTito
                 if (file[i].FullName.Substring(file[i].FullName.Length - 5) ==
                         ".meca")
                 {
-                    Console.SetCursorPosition(110, 27 + i);
-                    Console.WriteLine(file[i].FullName.Substring(
+                    exercises.Add(file[i].FullName.Substring(
                             file[i].FullName.Length - 11));
                 }
             }
         }
 
+        public void ShowExercises(int startExercice)
+        {
+            int lastExercise = startExercice + 10;
+            int yExercises;
+
+            for (int i = startExercice; i < lastExercise; i++)
+            {
+                yExercises = i - startExercice;
+                Console.SetCursorPosition(110, 27 + yExercises);
+                Console.WriteLine(exercises[i]);
+            }
+        }
+
         public void CheckKey(LearnToWriteWithTheTito LearnToWrite)
         {
+            int startExercice = 0;
+            int pos = 0;
             int course = 1;
             int level = 1;
             int exercise = 1;
             int yArrow = 0;
             ConsoleKeyInfo key;
             bool enterKey = false;
-
+            ShowExercises(startExercice);
             do
             {
                 Console.SetCursorPosition(107, 27 + yArrow);
@@ -50,7 +65,7 @@ namespace LearnToWriteWithTheTito
 
                     if (key.Key == ConsoleKey.UpArrow)
                     {
-                        if (yArrow > 0)
+                        /*if (yArrow > 0)
                         {
                             Console.SetCursorPosition(107, 27 + yArrow);
                             Console.Write("  ");
@@ -67,11 +82,63 @@ namespace LearnToWriteWithTheTito
                                     course--;
                                 }
                             }
+                        }*/
+                        pos--;
+                        if (pos >= 0)
+                        {
+                            Console.SetCursorPosition(107, 27 + yArrow);
+                            Console.Write("  ");
+                            
+                            if(yArrow > 0)
+                            {
+                                yArrow--;
+                                exercise--;
+                                if (exercise < 1 )
+                                {
+                                    exercise = 3;
+                                    level--;
+                                    if (level < 1)
+                                    {
+                                        level = 2;
+                                        course--;
+                                        if (course < 1)
+                                        {
+                                            course = 1;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (pos <= startExercice)
+                            {
+                                yArrow = 0;
+                                startExercice--;
+                                ShowExercises(startExercice);
+
+                                exercise--;
+                                if (exercise < 1)
+                                {
+                                    exercise = 1;
+                                    level--;
+                                    if (level < 1)
+                                    {
+                                        level = 1;
+                                        course--;
+                                        if (course < 1)
+                                        {
+                                            course = 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            pos++;
                         }
                     }
                     else if (key.Key == ConsoleKey.DownArrow)
                     {
-                        if (yArrow < 11)
+                        /*if (yArrow < 9)
                         {
                             Console.SetCursorPosition(107, 27 + yArrow);
                             Console.Write("  ");
@@ -88,7 +155,61 @@ namespace LearnToWriteWithTheTito
                                     course++;
                                 }
                             }
+                        }*/
+
+                        pos++;
+                        if (pos < exercises.Count)
+                        {
+                            Console.SetCursorPosition(107, 27 + yArrow);
+                            Console.Write("  ");
+                            
+                            if (yArrow < 9)
+                            {
+                                yArrow++;
+                                exercise++;
+                                if (exercise > 3) // Greater than 3 because there are only 3 exercises per level
+                                {
+                                    exercise = 1;
+                                    level++;
+                                    if (level > 2) // Greater than 2 because there are only 2 levels per course
+                                    {
+                                        level = 1;
+                                        course++;
+                                        if (course > 2)
+                                        {
+                                            course = 2;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (pos >= startExercice + 10)
+                            {
+                                startExercice++;
+                                ShowExercises(startExercice);
+
+                                exercise++;
+                                if (exercise > 3) // Greater than 3 because there are only 3 exercises per level
+                                {
+                                    exercise = 1;
+                                    level++;
+                                    if (level > 2) // Greater than 2 because there are only 2 levels per course
+                                    {
+                                        level = 1;
+                                        course++;
+                                        if (course > 2)
+                                        {
+                                            course = 2;
+                                        }
+                                    }
+                                }
+                            }
+                            
                         }
+                        else
+                        {
+                            pos--;
+                        } 
+                        
                     }
                     else if(key.Key == ConsoleKey.Enter)
                     {
@@ -100,6 +221,7 @@ namespace LearnToWriteWithTheTito
                 }
             } while (!enterKey);
         }
+
         public void Draw(LearnToWriteWithTheTito LearnToWrite)
         {
             Console.SetCursorPosition(0, 2);

@@ -14,10 +14,10 @@ namespace LearnToWriteWithTheTito
     {
         private int[] originTime;
         private int[] currentTime;
-        private int xKeyboard;
-        private int yKeyboard;
-        private int xHands;
-        private int yHands;
+        protected int xKeyboard;
+        protected int yKeyboard;
+        protected int xHands;
+        protected int yHands;
         private int xMenu;
         private int yMenu;
 
@@ -47,9 +47,9 @@ namespace LearnToWriteWithTheTito
             Console.WriteLine("    |______| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |____________|");
             Console.WriteLine("                   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   _______");
             Console.WriteLine("                  |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |       |");
-            Console.WriteLine("                  | Q | | W | | E | | R | | T | | Y | | U | | I | | O | | P | | ` | | + | | ENTER |");
+            Console.WriteLine("                  | Q | | W | | E | | R | | T | | Y | | U | | I | | O | | P | | ` | | + | |       |");
             Console.WriteLine("                  |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |       |");
-            Console.WriteLine("     ___________   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___  |       |");
+            Console.WriteLine("     ___________   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___  | ENTER |");
             Console.WriteLine("    |           | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |       |");
             Console.WriteLine("    |   MAYUS   | | A | | S | | D | | F | | G | | H | | J | | K | | L | | Ñ | | ´ | | Ç | |       |");
             Console.WriteLine("    |___________| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |_______|");
@@ -59,7 +59,7 @@ namespace LearnToWriteWithTheTito
             Console.WriteLine("    |_________| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |___| |_______________|");
             Console.WriteLine("     _________               ___   ___________________________                                    ");
             Console.WriteLine("    |         |             |   | |                           |                                   ");
-            Console.WriteLine("    | CONTROL |             |ALT| |          SPACE            |                                   ");
+            Console.WriteLine("    | CONTROL |             |ALT| |           SPACE           |                                   ");
             Console.WriteLine("    |_________|             |___| |___________________________|                                   ");
 
         }
