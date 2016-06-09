@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace LearnToWriteWithTheTito
@@ -12,8 +9,6 @@ namespace LearnToWriteWithTheTito
     {
         private bool finishCheck;
         private DateTime origin;
-        private int[] originTime;
-        private int[] currentTime;
         private Mark marks;
         private Element element;
         private Exercise exercises;
@@ -21,11 +16,10 @@ namespace LearnToWriteWithTheTito
         private int course;
         private int level;
         private int exercise;
+        const int WIDTHSCREAN = 135;
 
         public TextWriting()
         {
-            originTime = new int[3];
-            currentTime = new int[3];
             element = new Element();
             marks = new Mark();
             exercises = new Exercise();
@@ -79,7 +73,6 @@ namespace LearnToWriteWithTheTito
         /// <param name="level">Parameter indicating the level to be read</param>
         public void Read()
         {
-            
             string fileName = course.ToString("00") + level.ToString("00")
                     + exercise.ToString("00") + ".meca";
             if (File.Exists(fileName))
@@ -160,14 +153,14 @@ namespace LearnToWriteWithTheTito
                     " Level: " + exercises.GetLevel() + " Exercise: " +
                     exercises.GetExercise() + " " + exercises.GetComment());
             Console.ForegroundColor = ConsoleColor.Gray;
-            yText += 1;
+            yText ++;
             Console.SetCursorPosition(xText, yText);
 
             for (int i = 0; i < exercises.GetText()[0].Length; i ++)
             {
-                if((i % 135 == 0) && (i > 0))
+                if((i % WIDTHSCREAN == 0) && (i > 0))
                 {
-                    yText += 1;
+                    yText ++;
                     Console.SetCursorPosition(xText, yText);
                 }
                 Console.Write(exercises.GetText()[0][i]);
@@ -184,22 +177,21 @@ namespace LearnToWriteWithTheTito
             marks.SetCourse(course);
             marks.SetLevel(level);
             bool lastCourseLevelExercice = false;
-            int lastCourse = 2;
-            int lastLevel = 3;
-            int lastExercice = 10;
+            const int LASTCOURSE = 2;
+            const int LASTLEVEL = 3;
+            const int LASTEXERCISE = 10;
             origin = DateTime.Now;
+            element.SetOrigin(origin);
             int xWrite = 5;
             int yWrite = 9;
             finishCheck = false;
             bool enterKey = false;
             int yArrow = 0;
-            originTime[0] = origin.Hour;
-            originTime[1] = origin.Minute;
-            originTime[2] = origin.Second;
             int xOutMessage = 65;
             int yOutMessage = 35;
             int mistakes = 0;
             int currentPos = 0;
+            int totalPulsations = 0;
             //int currentWord = 0;
             //int currentPosInWord = 0;
             //string[] words = exercises[0].GetText()[0].Split(' ');
@@ -218,10 +210,13 @@ namespace LearnToWriteWithTheTito
             {
                 //finish = false;
                 DateTime current = DateTime.Now;
-                currentTime[0] = current.Hour;
-                currentTime[1] = current.Minute;
-                currentTime[2] = current.Second;
-                element.Menu(originTime, currentTime, mistakes);
+
+                element.SetMistakes(mistakes);
+                element.SetTotalPulsations(totalPulsations);
+                element.SetCurrent(current);
+
+                element.Menu();
+
                 marks.Hand(exercises.GetText()[0][currentPos], false);
                 marks.KeyBoard(exercises.GetText()[0][currentPos], false);
 
@@ -233,6 +228,7 @@ namespace LearnToWriteWithTheTito
 
                     if (key.Key != ConsoleKey.Escape)
                     {
+                        totalPulsations++;
                         if (key.KeyChar != exercises.GetText()[0][currentPos])
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -256,7 +252,7 @@ namespace LearnToWriteWithTheTito
                         // Reflects the value of the key, check it and if it is
                         // right printed with green, if the letter is incorrect
                         // printed in red
-                        if ((currentPos % 135 == 0) && (currentPos > 0))
+                        if ((currentPos % WIDTHSCREAN == 0) && (currentPos > 0))
                         {
                             yWrite += 1;
                             posX = 0;
@@ -269,6 +265,7 @@ namespace LearnToWriteWithTheTito
                         if (currentPos == exercises.GetText()[0].Length)
                         {
                             finishCheck = true;
+                            
                             if (mistakes != 0)
                             {
                                 Console.SetCursorPosition(xWrite, yWrite + 4);
@@ -326,8 +323,8 @@ namespace LearnToWriteWithTheTito
                                 Console.SetCursorPosition(xWrite, yWrite + 4);
                                 Console.WriteLine("Back to welcome screan");
 
-                                if (lastCourse == course && lastLevel == level &&
-                                        lastExercice == exercise)
+                                if (LASTCOURSE == course && LASTLEVEL == level &&
+                                        LASTEXERCISE == exercise)
                                     lastCourseLevelExercice = true;
 
                                 if (!lastCourseLevelExercice)
@@ -375,18 +372,18 @@ namespace LearnToWriteWithTheTito
                                                 {
                                                     exercise++;
 
-                                                    if (exercise > lastExercice)
+                                                    if (exercise > LASTEXERCISE)
                                                     {
                                                         exercise = 1;
                                                         level++;
 
-                                                        if (level > lastLevel)
+                                                        if (level > LASTLEVEL)
                                                         {
                                                             level = 1;
                                                             course++;
-                                                            if (course > lastCourse)
+                                                            if (course > LASTCOURSE)
                                                             {
-                                                                course = lastCourse;
+                                                                course = LASTCOURSE;
                                                             }
                                                         }
                                                     }

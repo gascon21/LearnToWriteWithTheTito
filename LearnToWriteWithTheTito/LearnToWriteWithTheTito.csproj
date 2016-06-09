@@ -46,7 +46,6 @@
     <Compile Include="Element.cs" />
     <Compile Include="LearnToWriteWithTheTito.cs" />
     <Compile Include="Exercise.cs" />
-    <Compile Include="LogicMenu.cs" />
     <Compile Include="Mark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Records.cs" />

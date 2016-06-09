@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnToWriteWithTheTito
 {
@@ -10,11 +6,11 @@ namespace LearnToWriteWithTheTito
     {
         public void KeyBoard(char character, bool clear)
         {
-            int yFirstLine = yKeyboard + 3;
-            int ySecondLine = yKeyboard + 7;
-            int yThirdLine = yKeyboard + 11;
-            int yFourthLine = yKeyboard + 15;
-            int yFifthLine = yKeyboard + 19;
+            int yFirstLine = YKEYBOARD + 3;
+            int ySecondLine = YKEYBOARD + 7;
+            int yThirdLine = YKEYBOARD + 11;
+            int yFourthLine = YKEYBOARD + 15;
+            int yFifthLine = YKEYBOARD + 19;
             
             const int XKEY2 = 6;
             const int XKEY3 = 12;
@@ -30,11 +26,11 @@ namespace LearnToWriteWithTheTito
             const int XSHIFTRIGTH = 66;
             const int XSHIFTLEFT = 15;
 
-            int xIniFirstLine = xKeyboard + 15;
-            int xIniSecondLine = xKeyboard + 20;
-            int xIniThirdLine = xKeyboard + 20;
-            int xIniFourthLine = xKeyboard + 24;
-            int xIniFifthLine = xKeyboard + 48;
+            int xIniFirstLine = XKEYBOARD + 15;
+            int xIniSecondLine = XKEYBOARD + 20;
+            int xIniThirdLine = XKEYBOARD + 20;
+            int xIniFourthLine = XKEYBOARD + 24;
+            int xIniFifthLine = XKEYBOARD + 48;
 
             switch (character)
             {
@@ -616,11 +612,11 @@ namespace LearnToWriteWithTheTito
                 case 'z':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     break;
 
@@ -630,11 +626,11 @@ namespace LearnToWriteWithTheTito
                 case 'x':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 4, yHands + 2, ' ');
+                        ClearHandsMark(XHANDS + 4, YHANDS + 2, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 4, yHands + 2, ' ');
+                        DrawHandsMark(XHANDS + 4, YHANDS + 2, ' ');
                     }
                     break;
 
@@ -644,11 +640,11 @@ namespace LearnToWriteWithTheTito
                 case 'c':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 6, yHands + 1, ' ');
+                        ClearHandsMark(XHANDS + 6, YHANDS + 1, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 6, yHands + 1, ' ');
+                        DrawHandsMark(XHANDS + 6, YHANDS + 1, ' ');
                     }
                     break;
 
@@ -662,11 +658,11 @@ namespace LearnToWriteWithTheTito
                 case 'b':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 8, yHands + 2, ' ');
+                        ClearHandsMark(XHANDS + 8, YHANDS + 2, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 8, yHands + 2, ' ');
+                        DrawHandsMark(XHANDS + 8, YHANDS + 2, ' ');
                     }
                     break;
 
@@ -677,11 +673,11 @@ namespace LearnToWriteWithTheTito
                 case '+':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 28, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 28, YHANDS + 3, ' ');
                     }
                     break;
 
@@ -691,11 +687,11 @@ namespace LearnToWriteWithTheTito
                 case '.':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 26, yHands + 2, ' ');
+                        ClearHandsMark(XHANDS + 26, YHANDS + 2, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 26, yHands + 2, ' ');
+                        DrawHandsMark(XHANDS + 26, YHANDS + 2, ' ');
                     }
                     break;
 
@@ -705,11 +701,11 @@ namespace LearnToWriteWithTheTito
                 case ',':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 24, yHands + 1, ' ');
+                        ClearHandsMark(XHANDS + 24, YHANDS + 1, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 24, yHands + 1, ' ');
+                        DrawHandsMark(XHANDS + 24, YHANDS + 1, ' ');
                     }
                     break;
 
@@ -723,11 +719,11 @@ namespace LearnToWriteWithTheTito
                 case 'n':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 22, yHands + 2, ' ');
+                        ClearHandsMark(XHANDS + 22, YHANDS + 2, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 22, yHands + 2, ' ');
+                        DrawHandsMark(XHANDS + 22, YHANDS + 2, ' ');
                     }
                     break;
 
@@ -735,39 +731,39 @@ namespace LearnToWriteWithTheTito
                 case '_':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
-                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 28, YHANDS + 3, ' ');
+                        ClearHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
-                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 28, YHANDS + 3, ' ');
+                        DrawHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     break;
 
                 case ':':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 26, yHands + 2, ' ');
-                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 26, YHANDS + 2, ' ');
+                        ClearHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 26, yHands + 2, ' ');
-                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 26, YHANDS + 2, ' ');
+                        DrawHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     break;
 
                 case ';':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 24, yHands + 2, ' ');
-                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 24, YHANDS + 2, ' ');
+                        ClearHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 24, yHands + 2, ' ');
-                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 24, YHANDS + 2, ' ');
+                        DrawHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     break;
 
@@ -775,13 +771,13 @@ namespace LearnToWriteWithTheTito
                 case '&':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 22, yHands + 2, ' ');
-                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 22, YHANDS + 2, ' ');
+                        ClearHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 22, yHands + 2, ' ');
-                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 22, YHANDS + 2, ' ');
+                        DrawHandsMark(XHANDS + 2, YHANDS + 3, ' ');
                     }
                     break;
 
@@ -789,26 +785,26 @@ namespace LearnToWriteWithTheTito
                 case '%':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 8, yHands + 2, ' ');
-                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
+                        ClearHandsMark(XHANDS + 8, YHANDS + 2, ' ');
+                        ClearHandsMark(XHANDS + 28, YHANDS + 3, ' ');
                     }
                     else
                     {
-                        DrawHandsMark(xHands + 8, yHands + 2, ' ');
-                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
+                        DrawHandsMark(XHANDS + 8, YHANDS + 2, ' ');
+                        DrawHandsMark(XHANDS + 28, YHANDS + 3, ' ');
                     }
                     break;
 
                 case ' ':
                     if (clear)
                     {
-                        ClearHandsMark(xHands + 10, yHands + 4, ' ');
-                        ClearHandsMark(xHands + 20, yHands + 4, ' ');
+                        ClearHandsMark(XHANDS + 10, YHANDS + 4, ' ');
+                        ClearHandsMark(XHANDS + 20, YHANDS + 4, ' ');
                     }
                     else
                     {                                  
-                        DrawHandsMark(xHands + 10, yHands + 4, ' ');
-                        DrawHandsMark(xHands + 20, yHands + 4, ' ');
+                        DrawHandsMark(XHANDS + 10, YHANDS + 4, ' ');
+                        DrawHandsMark(XHANDS + 20, YHANDS + 4, ' ');
                     }
                     break;
             }

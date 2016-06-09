@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LearnToWriteWithTheTito
 {
@@ -12,19 +8,20 @@ namespace LearnToWriteWithTheTito
     /// </summary>
     class Element
     {
-        private int[] originTime;
-        private int[] currentTime;
+        private DateTime origin;
+        private DateTime current;
         private int mistakes;
-        protected int xKeyboard;
-        protected int yKeyboard;
-        protected int xHands;
-        protected int yHands;
-        private int xBPM;
-        private int yBPM;
-        private int xMistakes;
-        private int yMistakes;
-        private int xChronometer;
-        private int yChronometer;
+        private int BPM;
+        protected const int XKEYBOARD = 0;
+        protected const int YKEYBOARD = 17;
+        protected const int XHANDS = 105;
+        protected const int YHANDS = 30;
+        private const int XBMP = 118;
+        private const int YBMP = 19;
+        private const int XMISTAKES = 116;
+        private const int YMISTAKES = 23;
+        private const int XCHRONOMETER = 118;
+        private const int YCHRONOMETER = 27;
         protected int course;
         protected int level;
         protected const int COURSEHIDDENMARKKEYBOARD = 2;
@@ -32,38 +29,40 @@ namespace LearnToWriteWithTheTito
         protected const int LEVELHIDDENHANDS = 2;
         protected const int COURSEHIDDENKEYBOARD = 2;
         protected const int LEVELHIDDENKEYBOARD = 2;
+        private int totalPulsations;
+        private int seconds;
+        private int minutes;
+        private int hours;
 
         public Element()
         {
             // Approximate coordinates
-            xKeyboard = 0;
-            yKeyboard = 17;
-            xHands = 105;
-            yHands = 30;
-            xBPM = 118;
-            yBPM = 19;
-            xMistakes = 116;
-            yMistakes = 23;
-            xChronometer = 118;
-            yChronometer = 27;
-            originTime = new int[3];
-            currentTime= new int[3];
             mistakes = 0;
         }
 
-        public int GetLevel()
+        public void SetTotalPulsations(int totalPulsations)
         {
-            return level;
+            this.totalPulsations = totalPulsations;
+        }
+
+        public void SetOrigin(DateTime origin)
+        {
+            this.origin = origin;
+        }
+
+        public void SetCurrent(DateTime current)
+        {
+            this.current = current;
+        }
+
+        public void SetMistakes(int mistakes)
+        {
+            this.mistakes = mistakes;
         }
 
         public void SetLevel(int level)
         {
             this.level = level;
-        }
-
-        public int GetCourse()
-        {
-            return course;
         }
 
         public void SetCourse(int course)
@@ -77,7 +76,7 @@ namespace LearnToWriteWithTheTito
         /// </summary>
         public void Keyboard()
         {
-            Console.SetCursorPosition(xKeyboard, yKeyboard);
+            Console.SetCursorPosition(XKEYBOARD, YKEYBOARD);
             Console.WriteLine("     ______   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ___   ____________");
             Console.WriteLine("    |      | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |   | |            |");
             Console.WriteLine("    | ESC  | | 1 | | 2 | | 3 | | 4 | | 5 | | 6 | | 7 | | 8 | | 9 | | 0 | | = | | ¡ | |   DELETE   |");
@@ -107,64 +106,76 @@ namespace LearnToWriteWithTheTito
         /// </summary>
         private void Hands()
         {
-            Console.SetCursorPosition(xHands, yHands);
+            Console.SetCursorPosition(XHANDS, YHANDS);
             Console.WriteLine("     .-.               .-.     ");
-            Console.SetCursorPosition(xHands, yHands + 1);
+            Console.SetCursorPosition(XHANDS, YHANDS + 1);
             Console.WriteLine("   .-| |-.           .-| |-.   ");
-            Console.SetCursorPosition(xHands, yHands + 2);
+            Console.SetCursorPosition(XHANDS, YHANDS + 2);
             Console.WriteLine(" .-| | | |           | | | |-. ");
-            Console.SetCursorPosition(xHands, yHands + 3);
+            Console.SetCursorPosition(XHANDS, YHANDS + 3);
             Console.WriteLine(" | | | | |-.       .-| | | | | ");
-            Console.SetCursorPosition(xHands, yHands + 4);
+            Console.SetCursorPosition(XHANDS, YHANDS + 4);
             Console.WriteLine(" | '     | |       | |     ` | ");
-            Console.SetCursorPosition(xHands, yHands + 5);
+            Console.SetCursorPosition(XHANDS, YHANDS + 5);
             Console.WriteLine("  \\       /         \\       / ");
-            Console.SetCursorPosition(xHands, yHands + 6);
+            Console.SetCursorPosition(XHANDS, YHANDS + 6);
             Console.WriteLine("   |     |           |     |  ");
         }
 
         private void BeatsPerMinute()
         {
-            Console.SetCursorPosition(xBPM, yBPM);
+            Console.SetCursorPosition(XBMP, YBMP);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("BPM");
             Console.ForegroundColor = ConsoleColor.Gray;
+
+            double totalMinutes = (minutes + (hours * 60) + (seconds / 60));
+            if(totalMinutes > 0)
+                BPM = Convert.ToInt32(totalPulsations / totalMinutes);
+
+            Console.SetCursorPosition(XBMP, YBMP + 1);
+            Console.WriteLine(BPM);
             // TODO
         }
 
-        private void Mistakes(int mistakes)
+        private void Mistakes()
         {
-            Console.SetCursorPosition(xMistakes, yMistakes);
+            Console.SetCursorPosition(XMISTAKES, YMISTAKES);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Mistakes");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(xMistakes + 3, yMistakes + 1);
+            Console.SetCursorPosition(XMISTAKES + 3, YMISTAKES + 1);
             Console.WriteLine(mistakes.ToString("00"));
             // TODO
         }
 
-        private void Chronometer(int[] originTime, int[] currentTime)
+        private void Chronometer()
         {
-            Console.SetCursorPosition(xChronometer, yChronometer);
+            Console.SetCursorPosition(XCHRONOMETER, YCHRONOMETER);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Time");
-            this.originTime = originTime;
-            this.currentTime = currentTime;
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(xChronometer - 2, yChronometer + 1);
-            Console.WriteLine((currentTime[0] - originTime[0]).ToString("00") + ":" +
-                    (currentTime[1] - originTime[1]).ToString("00") +
-                    ":" + (currentTime[2] - originTime[2]).ToString("00"));
+
+            TimeSpan dif = current - origin;
+
+            seconds = dif.Seconds;
+            minutes = dif.Minutes;
+            hours = dif.Hours;
+
+            Console.SetCursorPosition(XCHRONOMETER - 2, YCHRONOMETER + 1);
+            Console.WriteLine(hours.ToString("00") + ":" +
+                        minutes.ToString("00") + ":" +
+                        seconds.ToString("00"));
         }
 
         /// <summary>
         /// This function draws in the indicated position the menu
         /// </summary>
-        public void Menu(int[] originTime, int[] currentTime, int mistakes)
+        public void Menu()
         {
             BeatsPerMinute();
-            Mistakes(mistakes);
-            Chronometer(originTime, currentTime);
+            Mistakes();
+            Chronometer();
         }
 
 
@@ -183,7 +194,7 @@ namespace LearnToWriteWithTheTito
                 if (level < LEVELHIDDENHANDS)
                     Hands();
 
-            Menu(originTime, currentTime, mistakes);
+            Menu();
         }
     }
 }

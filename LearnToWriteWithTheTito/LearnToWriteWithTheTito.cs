@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace LearnToWriteWithTheTito
 {
@@ -29,56 +24,6 @@ namespace LearnToWriteWithTheTito
             welcomeScreen = new WelcomeScreen();
         }
 
-        public int GetLevel()
-        {
-            return level;
-        }
-
-        public void SetLevel(int level)
-        {
-            this.level = level;
-        }
-
-        public int GetCourse()
-        {
-            return course;
-        }
-
-        public void SetCourse(int course)
-        {
-            this.course = course;
-        }
-
-        public int GetExercise()
-        {
-            return exercise;
-        }
-
-        public void SetExercise(int exercise)
-        {
-            this.exercise = exercise;
-        }
-
-        public bool GetFinish()
-        {
-            return finish;
-        }
-
-        public void SetFinish(bool finish)
-        {
-            this.finish = finish;
-        }
-
-        public bool GetDrawWelcome()
-        {
-            return drawWelcome;
-        }
-
-        public void SetDrawWelcome(bool drawWelcome)
-        {
-            this.drawWelcome = drawWelcome;
-        }
-
         private void Run(LearnToWriteWithTheTito LearnToWrite)
         {
             do
@@ -89,7 +34,7 @@ namespace LearnToWriteWithTheTito
                     course = welcomeScreen.GetCourse();
                     level = welcomeScreen.GetLevel();
                     exercise = welcomeScreen.GetExercise();
-                    SetFinish(welcomeScreen.GetFinish());
+                    finish = (welcomeScreen.GetFinish());
                     drawWelcome = false;
                     textWriting.SetDrawWelcome(false);
                 }
