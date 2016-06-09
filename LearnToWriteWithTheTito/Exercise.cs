@@ -9,7 +9,7 @@ namespace LearnToWriteWithTheTito
     class Exercise
     {
         private byte course;
-        private byte lesson;
+        private byte level;
         private byte exercise;
         private string comment;
         private string time;
@@ -24,13 +24,13 @@ namespace LearnToWriteWithTheTito
         {
             this.course = (byte)course;
         }
-        public int GetLesson()
+        public int GetLevel()
         {
-            return lesson;
+            return level;
         }
-        public void SetLesson(int lesson)
+        public void SetLevel(int level)
         {
-            this.lesson = (byte)lesson;
+            this.level = (byte)level;
         }
         public int GetExercise()
         {

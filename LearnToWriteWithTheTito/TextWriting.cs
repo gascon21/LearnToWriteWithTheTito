@@ -11,29 +11,65 @@ namespace LearnToWriteWithTheTito
     class TextWriting
     {
         private bool finishCheck;
-        private int xText;
-        private int yText;
-        private int xWrite;
-        private int yWrite;
-        private DateTime origin = DateTime.Now;
+        private DateTime origin;
         private int[] originTime;
         private int[] currentTime;
         private Mark marks;
-        private Element elementChrono;
+        private Element element;
         private Exercise exercises;
+        private bool drawWelcome;
+        private int course;
+        private int level;
+        private int exercise;
 
         public TextWriting()
         {
-            xText = 5;
-            yText = 1;
-            xWrite = 5;
-            yWrite = 9;
-            finishCheck = false;
             originTime = new int[3];
             currentTime = new int[3];
-            elementChrono = new Element();
+            element = new Element();
             marks = new Mark();
             exercises = new Exercise();
+        }
+        
+
+        public int GetLevel()
+        {
+            return level;
+        }
+
+        public void SetLevel(int level)
+        {
+            this.level = level;
+        }
+
+        public int GetCourse()
+        {
+            return course;
+        }
+
+        public void SetCourse(int course)
+        {
+            this.course = course;
+        }
+
+        public int GetExercise()
+        {
+            return exercise;
+        }
+
+        public void SetExercise(int exercise)
+        {
+            this.exercise = exercise;
+        }
+
+        public bool GetDrawWelcome()
+        {
+            return drawWelcome;
+        }
+
+        public void SetDrawWelcome(bool drawWelcome)
+        {
+            this.drawWelcome = drawWelcome;
         }
 
         /// <summary>
@@ -41,7 +77,7 @@ namespace LearnToWriteWithTheTito
         /// which has passed through a parameter
         /// </summary>
         /// <param name="level">Parameter indicating the level to be read</param>
-        public void Read(int course, int level, int exercise)
+        public void Read()
         {
             
             string fileName = course.ToString("00") + level.ToString("00")
@@ -58,7 +94,7 @@ namespace LearnToWriteWithTheTito
                     exercises.SetCourse(Convert.ToInt32(line));
 
                     line = input.ReadLine();
-                    exercises.SetLesson(Convert.ToInt32(line));
+                    exercises.SetLevel(Convert.ToInt32(line));
 
                     line = input.ReadLine();
                     exercises.SetExercise(Convert.ToInt32(line));
@@ -113,12 +149,16 @@ namespace LearnToWriteWithTheTito
         /// corresponding phrase at the level
         /// </summary>
         /// <param name="level">Parameter indicating the level to be write</param>
-        public void Write(int course, int level, int exercise)
+        public void Write()
         {
-            Read(course, level, exercise);
+            int xText = 5;
+            int yText = 1;
+            Read();
             Console.SetCursorPosition(xText, yText);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Text to be writing");
+            Console.WriteLine("Course: " + exercises.GetCourse() +
+                    " Level: " + exercises.GetLevel() + " Exercise: " +
+                    exercises.GetExercise() + " " + exercises.GetComment());
             Console.ForegroundColor = ConsoleColor.Gray;
             yText += 1;
             Console.SetCursorPosition(xText, yText);
@@ -139,11 +179,25 @@ namespace LearnToWriteWithTheTito
         /// writing it typed by the user while checking failures
         /// </summary>
         /// <param name="level">Parameter indicating the level to be check</param>
-        public void Check(int course, int level, int exercise)
+        public void Check()
         {
+            marks.SetCourse(course);
+            marks.SetLevel(level);
+            bool lastCourseLevelExercice = false;
+            int lastCourse = 2;
+            int lastLevel = 3;
+            int lastExercice = 10;
+            origin = DateTime.Now;
+            int xWrite = 5;
+            int yWrite = 9;
+            finishCheck = false;
+            bool enterKey = false;
+            int yArrow = 0;
             originTime[0] = origin.Hour;
             originTime[1] = origin.Minute;
             originTime[2] = origin.Second;
+            int xOutMessage = 65;
+            int yOutMessage = 35;
             int mistakes = 0;
             int currentPos = 0;
             //int currentWord = 0;
@@ -155,7 +209,10 @@ namespace LearnToWriteWithTheTito
             Console.SetCursorPosition(xWrite, yWrite);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Writed text(Green correct, red mistake)");
+            Console.SetCursorPosition(xOutMessage, yOutMessage);
+            Console.WriteLine("Pres esc to return to the welcome screen");
             Console.ForegroundColor = ConsoleColor.Gray;
+
             yWrite += 1;
             while (!finishCheck)
             {
@@ -164,67 +221,207 @@ namespace LearnToWriteWithTheTito
                 currentTime[0] = current.Hour;
                 currentTime[1] = current.Minute;
                 currentTime[2] = current.Second;
-                elementChrono.Menu(originTime, currentTime);
+                element.Menu(originTime, currentTime, mistakes);
                 marks.Hand(exercises.GetText()[0][currentPos], false);
                 marks.KeyBoard(exercises.GetText()[0][currentPos], false);
 
-                Thread.Sleep(15);
+                Thread.Sleep(20);
                 if (Console.KeyAvailable)
                 {
                     Console.SetCursorPosition(xWrite + posX, yWrite);
                     ConsoleKeyInfo key = Console.ReadKey(true);
-                    if (key.KeyChar != exercises.GetText()[0][currentPos])
+
+                    if (key.Key != ConsoleKey.Escape)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(key.KeyChar);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        mistakes++;
+                        if (key.KeyChar != exercises.GetText()[0][currentPos])
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(key.KeyChar);
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            mistakes++;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(key.KeyChar);
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                        }
+
+                        marks.Hand(exercises.GetText()[0][currentPos], true);
+                        marks.KeyBoard(exercises.GetText()[0][currentPos], true);
+
+                        posX++;
+                        currentPos++;
+
+                        // Reflects the value of the key, check it and if it is
+                        // right printed with green, if the letter is incorrect
+                        // printed in red
+                        if ((currentPos % 135 == 0) && (currentPos > 0))
+                        {
+                            yWrite += 1;
+                            posX = 0;
+                            Console.SetCursorPosition(xWrite, yWrite);
+                        }
+
+                        // Check if you typed is correct or not, if it is passed 
+                        // to the next level, if not asking you to try again
+                        // lack of level rise
+                        if (currentPos == exercises.GetText()[0].Length)
+                        {
+                            finishCheck = true;
+                            if (mistakes != 0)
+                            {
+                                Console.SetCursorPosition(xWrite, yWrite + 4);
+                                Console.WriteLine("Wrong answer");
+                                Console.SetCursorPosition(xWrite, yWrite + 5);
+                                Console.WriteLine("Back to welcome screan");
+                                Console.SetCursorPosition(xWrite, yWrite + 6);
+                                Console.WriteLine("Repeat the exercise");
+
+                                do
+                                {
+                                    Console.SetCursorPosition(xWrite - 3, yWrite
+                                            + 5 + yArrow);
+                                    Console.Write("->");
+                                    Thread.Sleep(15);
+
+                                    if (Console.KeyAvailable)
+                                    {
+                                        key = Console.ReadKey(true);
+                                        if (key.Key == ConsoleKey.UpArrow)
+                                        {
+                                            Console.SetCursorPosition(xWrite - 3,
+                                                        yWrite + 5 + yArrow);
+                                            Console.Write("  ");
+                                            if (yArrow > 0)
+                                            {
+                                                yArrow--;
+                                            }
+                                        }
+                                        if (key.Key == ConsoleKey.DownArrow)
+                                        {
+                                            Console.SetCursorPosition(xWrite - 3,
+                                                        yWrite + 5 + yArrow);
+                                            Console.Write("  ");
+                                            if (yArrow < 1)
+                                            {
+                                                yArrow++;
+                                            }
+                                        }
+                                    }
+                                    else if (key.Key == ConsoleKey.Enter)
+                                    {
+                                        enterKey = true;
+                                        if(yArrow == 0)
+                                            drawWelcome = true;
+                                    }
+                                } while (!enterKey);
+
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.SetCursorPosition(xWrite, yWrite + 3);
+                                Console.WriteLine("Correct!");
+                                Console.SetCursorPosition(xWrite, yWrite + 4);
+                                Console.WriteLine("Back to welcome screan");
+
+                                if (lastCourse == course && lastLevel == level &&
+                                        lastExercice == exercise)
+                                    lastCourseLevelExercice = true;
+
+                                if (!lastCourseLevelExercice)
+                                {
+                                    Console.SetCursorPosition(xWrite, yWrite + 5);
+                                    Console.WriteLine("Go to the next level");
+                                    Console.WriteLine();
+
+                                    do
+                                    {
+                                        Console.SetCursorPosition(xWrite - 3, yWrite
+                                                + 4 + yArrow);
+                                        Console.Write("->");
+                                        Thread.Sleep(15);
+
+                                        if (Console.KeyAvailable)
+                                        {
+                                            key = Console.ReadKey(true);
+                                            if (key.Key == ConsoleKey.UpArrow)
+                                            {
+                                                Console.SetCursorPosition(xWrite - 3,
+                                                            yWrite + 4 + yArrow);
+                                                Console.Write("  ");
+                                                if (yArrow > 0)
+                                                {
+                                                    yArrow--;//todo
+                                                }
+                                            }
+                                            else if (key.Key == ConsoleKey.DownArrow)
+                                            {
+                                                Console.SetCursorPosition(xWrite - 3,
+                                                            yWrite + 4 + yArrow);
+                                                Console.Write("  ");
+                                                if (yArrow < 1)
+                                                {
+                                                    yArrow++;//todo
+                                                }
+                                            }
+                                            else if (key.Key == ConsoleKey.Enter)
+                                            {
+                                                enterKey = true;
+                                                if (yArrow == 0)
+                                                    drawWelcome = true;
+                                                else
+                                                {
+                                                    exercise++;
+
+                                                    if (exercise > lastExercice)
+                                                    {
+                                                        exercise = 1;
+                                                        level++;
+
+                                                        if (level > lastLevel)
+                                                        {
+                                                            level = 1;
+                                                            course++;
+                                                            if (course > lastCourse)
+                                                            {
+                                                                course = lastCourse;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } while (!enterKey);
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(xWrite - 3, yWrite
+                                                + 4 + yArrow);
+                                    Console.Write("->");
+                                    do
+                                    {
+                                        if (Console.KeyAvailable)
+                                        {
+                                        
+                                            key = Console.ReadKey(true);
+                                            if (key.Key == ConsoleKey.Enter)
+                                            {
+                                                enterKey = true;
+                                                drawWelcome = true;
+                                            }
+                                        
+                                        }
+                                    } while (!enterKey);
+                                }
+                            }
+                        }
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(key.KeyChar);
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-
-                    marks.Hand(exercises.GetText()[0][currentPos], true);
-                    marks.KeyBoard(exercises.GetText()[0][currentPos], true);
-
-                    posX++;
-                    currentPos++;
-
-                    // Reflects the value of the key, check it and if it is
-                    // right printed with green, if the letter is incorrect
-                    // printed in red
-                    if ((currentPos % 135 == 0) && (currentPos > 0))
-                    {
-                        yWrite += 1;
-                        posX = 0;
-                        Console.SetCursorPosition(xWrite, yWrite);
-                    }
-                }
-
-                // Check if you typed is correct or not, if it is passed 
-                // to the next level, if not asking you to try again
-                // lack of level rise
-                if (currentPos == exercises.GetText()[0].Length)
-                {
-                    if(mistakes != 0)
-                    {
-                        Console.SetCursorPosition(xWrite, yWrite + 4);
-                        Console.WriteLine("Wrong answer");
-                        Console.WriteLine();
                         finishCheck = true;
-                        Thread.Sleep(2000);
-                    }
-                    else
-                    {
-                        Console.SetCursorPosition(xWrite, yWrite + 4);
-                        Console.WriteLine("Correct!");
-                        Console.WriteLine();
-                        level++;
-                        finishCheck = true;
-                        Thread.Sleep(2000);
+                        drawWelcome = true;
                     }
                 }
             }

@@ -25,7 +25,11 @@ namespace LearnToWriteWithTheTito
             const int XKEY8 = 42;
             const int XKEY9 = 48;
             const int XKEY10 = 54;
-            
+            const int XKEY11 = 60;
+            const int XKEY12 = 66;
+            const int XSHIFTRIGTH = 66;
+            const int XSHIFTLEFT = 15;
+
             int xIniFirstLine = xKeyboard + 15;
             int xIniSecondLine = xKeyboard + 20;
             int xIniThirdLine = xKeyboard + 20;
@@ -37,451 +41,566 @@ namespace LearnToWriteWithTheTito
                 case '1':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine, yFirstLine, '_');
                     }
                     break;
 
                 case '2':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY2, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY2, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY2, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY2, yFirstLine, '_');
                     }
                     break;
 
                 case '3':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY3, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY3, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY3, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY3, yFirstLine, '_');
                     }
                     break;
 
                 case '4':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY4, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY4, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY4, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY4, yFirstLine, '_');
                     }
                     break;
 
                 case '5':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY5, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY5, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY5, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY5, yFirstLine, '_');
                     }
                     break;
 
                 case '6':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY6, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY6, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY6, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY6, yFirstLine, '_');
                     }
                     break;
 
                 case '7':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY7, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY7, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY7, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY7, yFirstLine, '_');
                     }
                     break;
 
                 case '8':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY8, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY8, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY8, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY8, yFirstLine, '_');
                     }
                     break;
 
                 case '9':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY9, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY9, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY10, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY10, yFirstLine, '_');
                     }
                     break;
 
                 case '0':
                     if (clear)
                     {
-                        ClearMark(xIniFirstLine + XKEY10, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFirstLine + XKEY10, yFirstLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFirstLine + XKEY10, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFirstLine + XKEY10, yFirstLine, '_');
                     }
                     break;
 
                 case 'q':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine, ySecondLine, '_');
                     }
                     break;
 
                 case 'w':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY2, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY2, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY2, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY2, ySecondLine, '_');
                     }
                     break;
 
                 case 'e':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY3, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY3, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY3, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY3, ySecondLine, '_');
                     }
                     break;
 
                 case 'r':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY4, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY4, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY4, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY4, ySecondLine, '_');
                     }
                     break;
 
                 case 't':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY5, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY5, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY5, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY5, ySecondLine, '_');
                     }
                     break;
 
                 case 'y':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY6, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY6, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY6, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY6, ySecondLine, '_');
                     }
                     break;
 
                 case 'u':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY7, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY7, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY7, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY7, ySecondLine, '_');
                     }
                     break;
 
                 case 'i':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY8, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY8, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY8, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY8, ySecondLine, '_');
                     }
                     break;
 
                 case 'o':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY9, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY9, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY9, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY9, ySecondLine, '_');
                     }
                     break;
 
                 case 'p':
                     if (clear)
                     {
-                        ClearMark(xIniSecondLine + XKEY10, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine + XKEY10, ySecondLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniSecondLine + XKEY10, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine + XKEY10, ySecondLine, '_');
                     }
                     break;
 
                 case 'a':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine, yThirdLine, '_');
                     }
                     break;
 
                 case 's':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY2, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY2, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY2, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY2, yThirdLine, '_');
                     }
                     break;
 
                 case 'd':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY3, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY3, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY3, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY3, yThirdLine, '_');
                     }
                     break;
 
                 case 'f':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY4, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY4, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY4, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY4, yThirdLine, '_');
                     }
                     break;
 
                 case 'g':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY5, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY5, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY5, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY5, yThirdLine, '_');
                     }
                     break;
 
                 case 'h':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY6, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY6, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY6, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY6, yThirdLine, '_');
                     }
                     break;
 
                 case 'j':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY7, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY7, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY7, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY7, yThirdLine, '_');
                     }
                     break;
 
                 case 'k':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY8, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY8, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY8, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY8, yThirdLine, '_');
                     }
                     break;
 
                 case 'l':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY9, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY9, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY9, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY9, yThirdLine, '_');
                     }
                     break;
 
                 case 'ñ':
                     if (clear)
                     {
-                        ClearMark(xIniThirdLine + XKEY10, yThirdLine, '_');
+                        ClearKeyboardMark(xIniThirdLine + XKEY10, yThirdLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniThirdLine + XKEY10, yThirdLine, '_');
+                        DrawKeyboardMark(xIniThirdLine + XKEY10, yThirdLine, '_');
                     }
                     break;
 
                 case 'z':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine, yFourthLine, '_');
                     }
                     break;
 
                 case 'x':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY2, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY2, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY2, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY2, yFourthLine, '_');
                     }
                     break;
 
                 case 'c':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY3, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY3, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY3, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY3, yFourthLine, '_');
                     }
                     break;
 
                 case 'v':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY4, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY4, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY4, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY4, yFourthLine, '_');
                     }
                     break;
 
                 case 'b':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY5, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY5, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY5, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY5, yFourthLine, '_');
                     }
                     break;
 
                 case 'n':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY6, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY6, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY6, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY6, yFourthLine, '_');
                     }
                     break;
 
                 case 'm':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY7, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY7, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY7, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY7, yFourthLine, '_');
                     }
                     break;
 
                 case ',':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY8, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY8, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY8, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY8, yFourthLine, '_');
                     }
                     break;
 
                 case '.':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY9, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY9, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY9, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY9, yFourthLine, '_');
                     }
                     break;
 
                 case '-':
                     if (clear)
                     {
-                        ClearMark(xIniFourthLine + XKEY10, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XKEY10, yFourthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFourthLine + XKEY10, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XKEY10, yFourthLine, '_');
+                    }
+                    break;
+
+                case '+':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniSecondLine + XKEY12, ySecondLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniSecondLine + XKEY12, ySecondLine, '_');
+                    }
+                    break;
+
+                case '*':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniSecondLine + XKEY12, ySecondLine, '_');
+                        ClearKeyboardMark(xIniSecondLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniSecondLine + XKEY12, ySecondLine, '_');
+                        DrawKeyboardMark(xIniSecondLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    break;
+
+                case '/':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFirstLine + XKEY7, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFirstLine + XKEY7, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    break;
+
+                case '&':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFirstLine + XKEY6, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFirstLine + XKEY6, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    break;
+
+                case '$':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFirstLine + XKEY4, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XSHIFTRIGTH, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFirstLine + XKEY4, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XSHIFTRIGTH, yFourthLine, '_');
+                    }
+                    break;
+
+                case '%':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFirstLine + XKEY5, yFirstLine, '_');
+                        ClearKeyboardMark(xIniFourthLine + XSHIFTRIGTH, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFirstLine + XKEY5, yFirstLine, '_');
+                        DrawKeyboardMark(xIniFourthLine + XSHIFTRIGTH, yFourthLine, '_');
+                    }
+                    break;
+
+                case '_':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFourthLine + XKEY10, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFourthLine + XKEY10, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    break;
+
+                case ':':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFourthLine + XKEY9, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFourthLine + XKEY9, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    break;
+
+                case ';':
+                    if (clear)
+                    {
+                        ClearKeyboardMark(xIniFourthLine + XKEY8, yFourthLine, '_');
+                        ClearKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
+                    }
+                    else
+                    {
+                        DrawKeyboardMark(xIniFourthLine + XKEY8, yFourthLine, '_');
+                        DrawKeyboardMark(xIniFourthLine - XSHIFTLEFT, yFourthLine, '_');
                     }
                     break;
 
                 case ' ':
                     if (clear)
                     {
-                        ClearMark(xIniFifthLine, yFifthLine, '_');
+                        ClearKeyboardMark(xIniFifthLine, yFifthLine, '_');
                     }
                     else
                     {
-                        DrawMark(xIniFifthLine, yFifthLine, '_');
+                        DrawKeyboardMark(xIniFifthLine, yFifthLine, '_');
                     }
                     break;
             }
@@ -497,11 +616,11 @@ namespace LearnToWriteWithTheTito
                 case 'z':
                     if (clear)
                     {
-                        ClearMark(xHands + 2, yHands + 3, ' ');
+                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 2, yHands + 3, ' ');
+                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
                     }
                     break;
 
@@ -511,11 +630,11 @@ namespace LearnToWriteWithTheTito
                 case 'x':
                     if (clear)
                     {
-                        ClearMark(xHands + 4, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 4, yHands + 2, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 4, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 4, yHands + 2, ' ');
                     }
                     break;
 
@@ -525,11 +644,11 @@ namespace LearnToWriteWithTheTito
                 case 'c':
                     if (clear)
                     {
-                        ClearMark(xHands + 6, yHands + 1, ' ');
+                        ClearHandsMark(xHands + 6, yHands + 1, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 6, yHands + 1, ' ');
+                        DrawHandsMark(xHands + 6, yHands + 1, ' ');
                     }
                     break;
 
@@ -543,11 +662,11 @@ namespace LearnToWriteWithTheTito
                 case 'b':
                     if (clear)
                     {
-                        ClearMark(xHands + 8, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 8, yHands + 2, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 8, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 8, yHands + 2, ' ');
                     }
                     break;
 
@@ -555,13 +674,14 @@ namespace LearnToWriteWithTheTito
                 case 'p':
                 case 'ñ':
                 case '-':
+                case '+':
                     if (clear)
                     {
-                        ClearMark(xHands + 28, yHands + 3, ' ');
+                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 28, yHands + 3, ' ');
+                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
                     }
                     break;
 
@@ -571,11 +691,11 @@ namespace LearnToWriteWithTheTito
                 case '.':
                     if (clear)
                     {
-                        ClearMark(xHands + 26, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 26, yHands + 2, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 26, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 26, yHands + 2, ' ');
                     }
                     break;
 
@@ -585,11 +705,11 @@ namespace LearnToWriteWithTheTito
                 case ',':
                     if (clear)
                     {
-                        ClearMark(xHands + 24, yHands + 1, ' ');
+                        ClearHandsMark(xHands + 24, yHands + 1, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 24, yHands + 1, ' ');
+                        DrawHandsMark(xHands + 24, yHands + 1, ' ');
                     }
                     break;
 
@@ -603,40 +723,150 @@ namespace LearnToWriteWithTheTito
                 case 'n':
                     if (clear)
                     {
-                        ClearMark(xHands + 22, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 22, yHands + 2, ' ');
                     }
                     else
                     {
-                        DrawMark(xHands + 22, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 22, yHands + 2, ' ');
+                    }
+                    break;
+
+                case '*':
+                case '_':
+                    if (clear)
+                    {
+                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
+                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    else
+                    {
+                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
+                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    break;
+
+                case ':':
+                    if (clear)
+                    {
+                        ClearHandsMark(xHands + 26, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    else
+                    {
+                        DrawHandsMark(xHands + 26, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    break;
+
+                case ';':
+                    if (clear)
+                    {
+                        ClearHandsMark(xHands + 24, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    else
+                    {
+                        DrawHandsMark(xHands + 24, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    break;
+
+                case '/':
+                case '&':
+                    if (clear)
+                    {
+                        ClearHandsMark(xHands + 22, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    else
+                    {
+                        DrawHandsMark(xHands + 22, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 2, yHands + 3, ' ');
+                    }
+                    break;
+
+                case '$':
+                case '%':
+                    if (clear)
+                    {
+                        ClearHandsMark(xHands + 8, yHands + 2, ' ');
+                        ClearHandsMark(xHands + 28, yHands + 3, ' ');
+                    }
+                    else
+                    {
+                        DrawHandsMark(xHands + 8, yHands + 2, ' ');
+                        DrawHandsMark(xHands + 28, yHands + 3, ' ');
                     }
                     break;
 
                 case ' ':
                     if (clear)
                     {
-                        ClearMark(xHands + 10, yHands + 4, ' ');
-                        ClearMark(xHands + 20, yHands + 4, ' ');
+                        ClearHandsMark(xHands + 10, yHands + 4, ' ');
+                        ClearHandsMark(xHands + 20, yHands + 4, ' ');
                     }
                     else
                     {                                  
-                        DrawMark(xHands + 10, yHands + 4, ' ');
-                        DrawMark(xHands + 20, yHands + 4, ' ');
+                        DrawHandsMark(xHands + 10, yHands + 4, ' ');
+                        DrawHandsMark(xHands + 20, yHands + 4, ' ');
                     }
                     break;
             }
         }
-        public void DrawMark(int xMark, int yMark, char symbol)
+
+        public void DrawHandsMark(int xMark, int yMark, char symbol)
         {
-            Console.SetCursorPosition(xMark, yMark);
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.Write(symbol);
-            Console.BackgroundColor = ConsoleColor.Black;
+            if (course < COURSEHIDDENHANDS)
+            {
+                Console.SetCursorPosition(xMark, yMark);
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.Write(symbol);
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+            else if (course == COURSEHIDDENHANDS)
+                if (level < LEVELHIDDENHANDS)
+                {
+                    Console.SetCursorPosition(xMark, yMark);
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.Write(symbol);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
         }
-        public void ClearMark(int xMark, int yMark, char symbol)
+        public void ClearHandsMark(int xMark, int yMark, char symbol)
         {
-            Console.SetCursorPosition(xMark, yMark);
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Write(symbol);
+            if (course < COURSEHIDDENHANDS)
+            {
+                Console.SetCursorPosition(xMark, yMark);
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write(symbol);
+            }
+            else if (course == COURSEHIDDENHANDS)
+                if (level < LEVELHIDDENHANDS)
+                {
+                    Console.SetCursorPosition(xMark, yMark);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write(symbol);
+                }
+        }
+
+        public void DrawKeyboardMark(int xMark, int yMark, char symbol)
+        {
+            if (course < COURSEHIDDENMARKKEYBOARD)
+            {
+                Console.SetCursorPosition(xMark, yMark);
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.Write(symbol);
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+        }
+        public void ClearKeyboardMark(int xMark, int yMark, char symbol)
+        {
+            if (course < COURSEHIDDENMARKKEYBOARD)
+            {
+                Console.SetCursorPosition(xMark, yMark);
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write(symbol);
+            }
         }
     }
 }

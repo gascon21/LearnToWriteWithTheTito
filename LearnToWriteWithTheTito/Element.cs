@@ -14,12 +14,24 @@ namespace LearnToWriteWithTheTito
     {
         private int[] originTime;
         private int[] currentTime;
+        private int mistakes;
         protected int xKeyboard;
         protected int yKeyboard;
         protected int xHands;
         protected int yHands;
-        private int xMenu;
-        private int yMenu;
+        private int xBPM;
+        private int yBPM;
+        private int xMistakes;
+        private int yMistakes;
+        private int xChronometer;
+        private int yChronometer;
+        protected int course;
+        protected int level;
+        protected const int COURSEHIDDENMARKKEYBOARD = 2;
+        protected const int COURSEHIDDENHANDS = 1;
+        protected const int LEVELHIDDENHANDS = 2;
+        protected const int COURSEHIDDENKEYBOARD = 2;
+        protected const int LEVELHIDDENKEYBOARD = 2;
 
         public Element()
         {
@@ -28,10 +40,35 @@ namespace LearnToWriteWithTheTito
             yKeyboard = 17;
             xHands = 105;
             yHands = 30;
-            xMenu = 118;
-            yMenu = 26;
+            xBPM = 118;
+            yBPM = 19;
+            xMistakes = 116;
+            yMistakes = 23;
+            xChronometer = 118;
+            yChronometer = 27;
             originTime = new int[3];
-            currentTime = new int[3];
+            currentTime= new int[3];
+            mistakes = 0;
+        }
+
+        public int GetLevel()
+        {
+            return level;
+        }
+
+        public void SetLevel(int level)
+        {
+            this.level = level;
+        }
+
+        public int GetCourse()
+        {
+            return course;
+        }
+
+        public void SetCourse(int course)
+        {
+            this.course = course;
         }
 
         /// <summary>
@@ -86,31 +123,67 @@ namespace LearnToWriteWithTheTito
             Console.WriteLine("   |     |           |     |  ");
         }
 
-        /// <summary>
-        /// This function draws in the indicated position the menu
-        /// </summary>
-        public void Menu(int[] originTime, int[] currentTime)
+        private void BeatsPerMinute()
         {
+            Console.SetCursorPosition(xBPM, yBPM);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("BPM");
+            Console.ForegroundColor = ConsoleColor.Gray;
             // TODO
+        }
 
-            Console.SetCursorPosition(xMenu, yMenu);
+        private void Mistakes(int mistakes)
+        {
+            Console.SetCursorPosition(xMistakes, yMistakes);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Mistakes");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(xMistakes + 3, yMistakes + 1);
+            Console.WriteLine(mistakes.ToString("00"));
+            // TODO
+        }
+
+        private void Chronometer(int[] originTime, int[] currentTime)
+        {
+            Console.SetCursorPosition(xChronometer, yChronometer);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Time");
             this.originTime = originTime;
             this.currentTime = currentTime;
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(xMenu - 2, yMenu + 1);
+            Console.SetCursorPosition(xChronometer - 2, yChronometer + 1);
             Console.WriteLine((currentTime[0] - originTime[0]).ToString("00") + ":" +
                     (currentTime[1] - originTime[1]).ToString("00") +
                     ":" + (currentTime[2] - originTime[2]).ToString("00"));
+        }
+
+        /// <summary>
+        /// This function draws in the indicated position the menu
+        /// </summary>
+        public void Menu(int[] originTime, int[] currentTime, int mistakes)
+        {
+            BeatsPerMinute();
+            Mistakes(mistakes);
+            Chronometer(originTime, currentTime);
         }
 
 
         public void Draw()
         {
             Console.Clear();
-            Keyboard();
-            Hands();
-            Menu(originTime, currentTime);
+            if (course < COURSEHIDDENKEYBOARD)
+                Keyboard();
+            else if(course == COURSEHIDDENKEYBOARD)
+                if(level < LEVELHIDDENKEYBOARD)
+                    Keyboard();
+
+            if (course < COURSEHIDDENHANDS)
+                Hands();
+            else if (course == COURSEHIDDENHANDS)
+                if (level < LEVELHIDDENHANDS)
+                    Hands();
+
+            Menu(originTime, currentTime, mistakes);
         }
     }
 }
