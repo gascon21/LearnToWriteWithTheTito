@@ -16,7 +16,7 @@ namespace LearnToWriteWithTheTito
         private int course;
         private int level;
         private int exercise;
-        const int WIDTHSCREAN = 135;
+        private const int WIDTHSCREAN = 135;
 
         public TextWriting()
         {
@@ -268,17 +268,17 @@ namespace LearnToWriteWithTheTito
                             
                             if (mistakes != 0)
                             {
-                                Console.SetCursorPosition(xWrite, yWrite + 4);
+                                Console.SetCursorPosition(xWrite, yWrite + 3);
                                 Console.WriteLine("Wrong answer");
+                                Console.SetCursorPosition(xWrite, yWrite + 4);
+                                Console.WriteLine("Back to welcome screen");
                                 Console.SetCursorPosition(xWrite, yWrite + 5);
-                                Console.WriteLine("Back to welcome screan");
-                                Console.SetCursorPosition(xWrite, yWrite + 6);
                                 Console.WriteLine("Repeat the exercise");
 
                                 do
                                 {
                                     Console.SetCursorPosition(xWrite - 3, yWrite
-                                            + 5 + yArrow);
+                                            + 4 + yArrow);
                                     Console.Write("->");
                                     Thread.Sleep(15);
 
@@ -288,7 +288,7 @@ namespace LearnToWriteWithTheTito
                                         if (key.Key == ConsoleKey.UpArrow)
                                         {
                                             Console.SetCursorPosition(xWrite - 3,
-                                                        yWrite + 5 + yArrow);
+                                                        yWrite + 4 + yArrow);
                                             Console.Write("  ");
                                             if (yArrow > 0)
                                             {
@@ -298,7 +298,7 @@ namespace LearnToWriteWithTheTito
                                         if (key.Key == ConsoleKey.DownArrow)
                                         {
                                             Console.SetCursorPosition(xWrite - 3,
-                                                        yWrite + 5 + yArrow);
+                                                        yWrite + 4 + yArrow);
                                             Console.Write("  ");
                                             if (yArrow < 1)
                                             {
@@ -321,7 +321,7 @@ namespace LearnToWriteWithTheTito
                                 Console.SetCursorPosition(xWrite, yWrite + 3);
                                 Console.WriteLine("Correct!");
                                 Console.SetCursorPosition(xWrite, yWrite + 4);
-                                Console.WriteLine("Back to welcome screan");
+                                Console.WriteLine("Back to welcome screen");
 
                                 if (LASTCOURSE == course && LASTLEVEL == level &&
                                         LASTEXERCISE == exercise)
@@ -330,7 +330,7 @@ namespace LearnToWriteWithTheTito
                                 if (!lastCourseLevelExercice)
                                 {
                                     Console.SetCursorPosition(xWrite, yWrite + 5);
-                                    Console.WriteLine("Go to the next level");
+                                    Console.WriteLine("Go to the next exercise");
                                     Console.WriteLine();
 
                                     do

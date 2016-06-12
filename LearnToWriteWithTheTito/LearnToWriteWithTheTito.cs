@@ -14,7 +14,7 @@ namespace LearnToWriteWithTheTito
         private TextWriting textWriting;
         private Element elements;
         private WelcomeScreen welcomeScreen;
-        bool drawWelcome = true;
+        private bool drawWelcome = true;
         private bool finish = false;
 
         public LearnToWriteWithTheTito()

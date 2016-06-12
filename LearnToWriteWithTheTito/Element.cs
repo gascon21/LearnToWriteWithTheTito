@@ -133,7 +133,7 @@ namespace LearnToWriteWithTheTito
             if(totalMinutes > 0)
                 BPM = Convert.ToInt32(totalPulsations / totalMinutes);
 
-            Console.SetCursorPosition(XBMP, YBMP + 1);
+            Console.SetCursorPosition(XBMP + 1, YBMP + 1);
             Console.WriteLine(BPM);
             // TODO
         }
